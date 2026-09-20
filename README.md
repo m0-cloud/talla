@@ -2,6 +2,12 @@
 
 **طلّة جديدة كل شهر.** منصة سعودية (نسخة تجريبية) لاستئجار القطع الفاخرة — حقائب، أحذية، ساعات، مجوهرات، إكسسوارات — باشتراك شهري. الموقع باللغة العربية (RTL) بالكامل، بلا أي أدوات بناء: HTML + CSS + JavaScript فقط.
 
+## الروابط الحية
+
+- Vercel (الإنتاج): https://talla-sa.vercel.app
+- GitHub Pages: https://m0-cloud.github.io/talla/
+- المستودع: https://github.com/m0-cloud/talla
+
 ## التشغيل
 
 ```bash
