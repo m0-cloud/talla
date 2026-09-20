@@ -44,6 +44,7 @@ const App = (() => {
     else if (seg[0] === 'plans') html = V.Plans();
     else if (seg[0] === 'how') html = V.How();
     else if (seg[0] === 'owners') html = V.Owners();
+    else if (seg[0] === 'about') html = V.About();
     else if (seg[0] === 'login') html = u ? V.Dashboard() : V.Login();
     else if (seg[0] === 'dashboard') html = u ? V.Dashboard(seg[1]) : V.Login();
     else html = `<div class="container"><div class="empty mt-4"><div class="big">🧭</div>الصفحة غير موجودة.<br><a href="#/" class="btn btn-outline btn-sm mt-2">الرئيسية</a></div></div>`;

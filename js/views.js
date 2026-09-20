@@ -168,6 +168,7 @@ const V = (() => {
       </div>
     </section>
 
+    ${VisionTeaser()}
     <section class="section">
       <div class="container">
         <div class="section-head reveal"><div><span class="kicker">آراء المشتركات</span><h2>قصص من خزانات سعودية</h2></div></div>
@@ -330,6 +331,106 @@ const V = (() => {
       <div class="faq card reveal" style="padding:10px 26px">${S.faq.map(f => `<details><summary>${f.q}</summary><p>${f.a}</p></details>`).join('')}</div>
       <div style="height:60px"></div>
     </div>`;
+  }
+
+
+  /* ================= ABOUT / VISION ================= */
+  const VISION = {
+    pillars: [
+      { k: 'sustain', t: 'الاستدامة', h: 'اقتصاد دائري للفخامة', ic: 'leaf',
+        p: 'القطعة الفاخرة صُنعت لتدوم عقوداً، لكنها تُستخدم في المتوسط مرات معدودة ثم تنام في الخزانة. في طلّة تعيش كل قطعة عشرات الإطلالات بدل إطلالة واحدة، فنقلّل الشراء الجديد والهدر ونطيل عمر ما هو موجود.',
+        stat: '٨×', sl: 'إطلالات لكل قطعة بدل إطلالة واحدة (تقديري)' },
+      { k: 'save', t: 'توفير التكلفة', h: 'الفخامة بجزء من ثمنها', ic: 'wallet',
+        p: 'حقيبة بـ ٤٠ ألف ريال تُستخدم في مناسبتين. بالاشتراك تحصلين على القطعة نفسها، وتبدّلينها بأخرى في الشهر التالي، بما يعادل أقل من ٣٪ من قيمتها. المال الذي كان سيُجمَّد في خزانة يبقى في حياتك.',
+        stat: '٩٠٪', sl: 'توفير مقارنة بامتلاك القطع نفسها (تقديري)' },
+      { k: 'reinvest', t: 'إعادة الاستثمار', h: 'أصول راكدة تتحول إلى دخل', ic: 'swap',
+        p: 'المالكات يحوّلن قطعاً نائمة إلى دخل شهري يُعاد ضخّه في مشاريعهن وتعليمهن وأسرهن. ونلتزم بتخصيص ٢٪ من إيرادات الاشتراكات لصندوق طلّة للتمكين: تدريب نساء على توثيق القطع الفاخرة والتنسيق (الستايلنج) وإدارة المتاجر.',
+        stat: '٢٪', sl: 'من الإيرادات لصندوق طلّة للتمكين' },
+      { k: 'women', t: 'من المرأة إلى المرأة', h: 'منصة نسائية بالكامل', ic: 'users',
+        p: 'المالكة امرأة، والمشتركة امرأة، وفريق التوثيق والتنسيق والتوصيل نساء سعوديات. نبني اقتصاداً صغيراً تديره نساء لنساء، تُحترم فيه الخصوصية وتُبنى فيه الثقة على المعرفة والذوق، لا على الإعلان.',
+        stat: '١٠٠٪', sl: 'فريق نسائي — من التوثيق إلى التوصيل' },
+    ],
+    v2030: [
+      { t: 'مجتمع حيوي', p: 'أسلوب حياة عصري يوازن بين الذوق والاعتدال، وثقافة إعادة الاستخدام بدل الاستهلاك.' },
+      { t: 'اقتصاد مزدهر', p: 'تمكين المرأة اقتصادياً، ودعم المنشآت الصغيرة والمتوسطة النسائية، وتنمية قطاع الأزياء الذي تقوده هيئة الأزياء.' },
+      { t: 'وطن طموح', p: 'نموذج سعودي في الاقتصاد الدائري يتماشى مع مبادرة السعودية الخضراء وأهداف خفض الهدر.' },
+    ],
+    impact: [
+      { v: 846, s: '', l: 'قطعة موثّقة في التشكيلة' },
+      { v: 6200, s: '+', l: 'إطلالة أُعيد استخدامها' },
+      { v: 4.1, s: 'م', l: 'ر.س وفّرتها المشتركات مقارنة بالشراء' },
+      { v: 1.3, s: 'م', l: 'ر.س حُوّلت لمالكات القطع' },
+    ],
+    commitments: [
+      ['2026', 'إطلاق صندوق طلّة للتمكين وتدريب أول ٥٠ خبيرة توثيق'],
+      ['2027', 'التوسع إلى ٨ مدن سعودية بفريق توصيل نسائي كامل'],
+      ['2028', 'تقرير أثر سنوي مدقّق: البصمة الكربونية المتجنَّبة والدخل المحوّل للمالكات'],
+      ['2030', '١٠٠ ألف قطعة مشتركة و١٠ آلاف مالكة تدرّ قطعهن دخلاً'],
+    ],
+  };
+  const ICO2 = {
+    leaf: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13c0-6 5-9 16-10-1 11-4 16-10 17z"/><path d="M4 20c4-4 8-6 12-9"/></svg>',
+    wallet: SVG.wallet, swap: SVG.swap, users: SVG.users,
+  };
+  const pillarCard = (x, i) => `<div class="card lift pillar reveal" data-delay="${i}"><div class="ic">${ICO2[x.ic]}</div><span class="kicker">${x.t}</span><h3>${x.h}</h3><p>${x.p}</p><div class="pstat"><b class="gold-text">${x.stat}</b><small>${x.sl}</small></div></div>`;
+
+  function About() {
+    const S = Store.get();
+    return `
+    <div class="container">
+      <div class="page-head reveal in" style="max-width:820px"><span class="kicker">رؤيتنا ورسالتنا</span><h1>فخامة تدور… لا تُهدر.<br><span class="gold-text">من المرأة إلى المرأة.</span></h1><p>طلّة منصة سعودية تعيد تعريف علاقة المرأة بالفخامة: بدل أن تشتري وتخزّن، تستأجر وتبدّل وتشارك — فتوفّر مالها، وتقلّل الهدر، وتمكّن نساءً أخريات من تحويل خزائنهن إلى دخل.</p></div>
+
+      <div class="grid-2 reveal" style="margin-bottom:50px">
+        <div class="card vm"><span class="kicker">رؤيتنا</span><p class="lead-ar">أن تكون طلّة الخزانة الفاخرة المشتركة الأولى في المملكة، ونموذجاً سعودياً في الاقتصاد الدائري تقوده النساء.</p></div>
+        <div class="card vm violet"><span class="kicker">رسالتنا</span><p class="lead-ar">أن نمنح كل امرأة سعودية وصولاً ميسوراً للفخامة الأصلية باشتراك شهري، وأن نحوّل القطع النائمة في الخزائن إلى دخل ومعرفة وفرص عمل لنساء أخريات.</p></div>
+      </div>
+
+      <div class="section-head reveal"><div><span class="kicker">ركائزنا الأربع</span><h2>لماذا نفعل ما نفعل</h2></div></div>
+      <div class="pillars" style="margin-bottom:60px">${VISION.pillars.map(pillarCard).join('')}</div>
+
+      <div class="impact card spot reveal" style="margin-bottom:60px">
+        <div class="section-head" style="margin-bottom:22px"><div><span class="kicker">أثرنا بالأرقام</span><h2 style="font-size:1.6rem">منذ الإطلاق التجريبي</h2></div><span class="badge muted">أرقام تجريبية توضيحية</span></div>
+        <div class="impact-grid">${VISION.impact.map(x => `<div class="stat"><b data-count="${x.v}" data-suffix="${x.s}" data-decimals="${String(x.v).includes('.') ? 1 : 0}">0</b><span>${x.l}</span></div>`).join('')}</div>
+      </div>
+
+      <div class="split" style="margin-bottom:60px">
+        <div class="reveal">
+          <span class="kicker">التوافق مع رؤية المملكة 2030</span>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.3rem);font-weight:900;line-height:1.25">نبني على ثلاث ركائز الرؤية</h2>
+          <p class="muted mt-2">تمكين المرأة اقتصادياً، وتنمية قطاع الأزياء والمنشآت الصغيرة، والاقتصاد الدائري المستدام — ليست شعارات عندنا، بل هي طريقة عمل المنصة يومياً.</p>
+          <div class="feature-list">${VISION.v2030.map(x => `<div class="feature"><div class="ic" style="background:rgba(88,209,154,.12);border-color:rgba(88,209,154,.35);color:#a7f0cd">${SVG.check}</div><div><b>${x.t}</b><p>${x.p}</p></div></div>`).join('')}</div>
+        </div>
+        <div class="card v2030 reveal" data-delay="1">
+          <div class="v2030-mark"><span>٢٠٣٠</span><small>رؤية المملكة العربية السعودية</small></div>
+          <ul class="v2030-list">
+            <li><b>مشاركة المرأة في سوق العمل</b><span>فرص عمل مرنة للمالكات وخبيرات التوثيق والتنسيق</span></li>
+            <li><b>المنشآت الصغيرة والمتوسطة</b><span>منصة تخلق دخلاً لآلاف المالكات دون رأس مال</span></li>
+            <li><b>قطاع الأزياء والترفيه</b><span>إتاحة إطلالات المناسبات والفعاليات بتكلفة أقل</span></li>
+            <li><b>الاستدامة والاقتصاد الدائري</b><span>إعادة استخدام بدل الشراء الجديد وخفض الهدر</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-head reveal"><div><span class="kicker">التزاماتنا</span><h2>خارطة الطريق حتى 2030</h2></div></div>
+      <div class="roadmap reveal">${VISION.commitments.map((c, i) => `<div class="rm-step reveal" data-delay="${i}"><b class="num">${c[0]}</b><i></i><p>${c[1]}</p></div>`).join('')}</div>
+
+      <div class="cta-banner spot reveal mt-4">
+        <h2>كوني جزءاً من <span class="gold-text">الدورة</span></h2>
+        <p>اشتركي وتألّقي، أو سجّلي قطعك ودعيها تعمل لأجلك ولأجل امرأة أخرى.</p>
+        <div class="row" style="justify-content:center"><a href="#/plans" class="btn btn-gold btn-lg" data-magnetic>اشتركي الآن</a><a href="#/owners" class="btn btn-ghost btn-lg" data-magnetic>سجّلي قطعك</a></div>
+      </div>
+      <div style="height:60px"></div>
+    </div>`;
+  }
+
+  function VisionTeaser() {
+    return `
+    <section class="section" style="padding-top:20px">
+      <div class="container">
+        <div class="section-head reveal"><div><span class="kicker">رؤيتنا</span><h2>فخامة تدور… لا تُهدر. من المرأة إلى المرأة.</h2><p>استدامة، توفير، إعادة استثمار، وتمكين — بما يتوافق مع رؤية المملكة 2030.</p></div><a href="#/about" class="btn btn-outline">رؤيتنا ورسالتنا ${SVG.arrow}</a></div>
+        <div class="pillars compact">${VISION.pillars.map((x, i) => `<a href="#/about" class="card lift pillar reveal" data-delay="${i}"><div class="ic">${ICO2[x.ic]}</div><span class="kicker">${x.t}</span><h3>${x.h}</h3><div class="pstat"><b class="gold-text">${x.stat}</b><small>${x.sl}</small></div></a>`).join('')}</div>
+      </div>
+    </section>`;
   }
 
   /* ================= OWNERS LANDING ================= */
@@ -608,5 +709,5 @@ const V = (() => {
   const rejectModal = (it) => `<div class="modal"><button class="icon-btn close" data-action="close-modal">${SVG.x}</button><h2>رفض القطعة</h2><p class="muted">${esc(it.brand)} ${esc(it.name)} — سيُبلَّغ المالك بالسبب.</p><form data-form="reject" data-id="${it.id}" class="mt-2"><div class="field"><label>سبب الرفض</label><select name="reason"><option>لم تجتز فحص الأصالة</option><option>حالة القطعة دون المعايير</option><option>خدوش أو تلف واضح</option><option>الدار غير مدعومة حالياً</option><option>بيانات غير مكتملة</option></select></div><div class="row" style="justify-content:end"><button type="button" class="btn btn-ghost" data-action="close-modal">إلغاء</button><button class="btn btn-danger" type="submit">تأكيد الرفض</button></div></form></div>`;
   const confirmModal = (title, text, action, id, btn = 'تأكيد', cls = 'btn-gold') => `<div class="modal"><button class="icon-btn close" data-action="close-modal">${SVG.x}</button><h2>${title}</h2><p class="muted">${text}</p><div class="row mt-3" style="justify-content:end"><button class="btn btn-ghost" data-action="close-modal">تراجع</button><button class="btn ${cls}" data-action="${action}" data-id="${id || ''}" data-confirmed="1">${btn}</button></div></div>`;
 
-  return { Home, Catalog, Item, Plans, How, Owners, Login, Dashboard, rentSuccess, rejectModal, confirmModal, initials, SVG, esc };
+  return { Home, Catalog, Item, Plans, How, Owners, About, Login, Dashboard, rentSuccess, rejectModal, confirmModal, initials, SVG, esc };
 })();

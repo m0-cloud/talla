@@ -97,11 +97,11 @@ const Effects = (() => {
   /* ---------- العدّادات ---------- */
   function bindCounters(root = document) {
     root.querySelectorAll('[data-count]').forEach(el => {
-      const target = Number(el.dataset.count), suffix = el.dataset.suffix || '';
+      const target = Number(el.dataset.count), suffix = el.dataset.suffix || '', dec = Number(el.dataset.decimals || 0);
       const start = performance.now(), dur = 1600;
       const tick = (t) => {
         const p = Math.min(1, (t - start) / dur), e = 1 - Math.pow(1 - p, 4);
-        el.textContent = Math.round(target * e).toLocaleString('en-US') + suffix;
+        el.textContent = (target * e).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + suffix;
         if (p < 1) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
