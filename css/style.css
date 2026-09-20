@@ -520,3 +520,15 @@ tbody tr:hover { background: rgba(255,255,255,.025); }
   .rental-card { grid-template-columns: 70px minmax(0, 1fr); }
   .rental-card > .actions { flex-direction: row; }
 }
+
+/* ---------- item photos ---------- */
+.item-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; transition: transform .9s var(--ease), filter .5s; }
+.item-art.has-img::before { background: linear-gradient(180deg, rgba(10,9,16,.05) 40%, rgba(10,9,16,.55) 100%); z-index: 1; }
+.item-art.has-img svg { display: none; }
+.item-art.has-img .brand-wm { z-index: 1; color: rgba(255,255,255,.28); text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+.item-art.has-img .shine { z-index: 2; }
+.item-card:hover .item-art.has-img img, .detail .item-art.has-img:hover img { transform: scale(1.06); }
+.float-card .item-art.has-img img { filter: saturate(1.05); }
+.thumb { position: relative; overflow: hidden; }
+.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.thumb.has-img svg { display: none; }

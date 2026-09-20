@@ -47,8 +47,8 @@ const V = (() => {
   const tierBadge = (tier) => `<span class="badge tier-${tier}">${['', 'لؤلؤة', 'ذهب', 'ماس'][tier]}</span>`;
   const catBadge = (cat) => `<span class="badge muted">${CATEGORY_LABELS[cat] || cat}</span>`;
   const roleBadge = (role) => `<span class="badge ${{ admin: 'bad', ops: 'info', owner: 'violet', renter: 'gold' }[role]}">${ROLE_LABELS[role]}</span>`;
-  const art = (it, cls = '') => `<div class="item-art ${cls}" style="background:${it.art}"><span class="brand-wm">${esc(it.brand)}</span>${ico(it.category)}<span class="shine"></span></div>`;
-  const thumb = (it) => `<div class="thumb" style="background:${it.art}">${ico(it.category)}</div>`;
+  const art = (it, cls = '') => `<div class="item-art ${cls} ${it.img ? 'has-img' : ''}" style="background:${it.art}">${it.img ? `<img src="${esc(it.img)}" alt="${esc(it.brand)} ${esc(it.name)}" loading="lazy" onerror="this.parentNode.classList.remove('has-img');this.remove()">` : ''}<span class="brand-wm">${esc(it.brand)}</span>${ico(it.category)}<span class="shine"></span></div>`;
+  const thumb = (it) => `<div class="thumb ${it.img ? 'has-img' : ''}" style="background:${it.art}">${it.img ? `<img src="${esc(it.img.replace('w=900', 'w=200'))}" alt="" loading="lazy" onerror="this.parentNode.classList.remove('has-img');this.remove()">` : ''}${ico(it.category)}</div>`;
 
   const itemCard = (it, opts = {}) => {
     const u = Store.user();

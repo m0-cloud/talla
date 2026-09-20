@@ -4,7 +4,7 @@
    ============================================================ */
 
 const Store = (() => {
-  const KEY = 'r4l_state_v1';
+  const KEY = 'r4l_state_v2';
   const SKEY = 'r4l_session_v1';
 
   const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -212,7 +212,7 @@ const Store = (() => {
     const it = {
       id: uid('i'), name: data.name, brand: data.brand.toUpperCase(), category: data.category, ownerId: u.id,
       tier: Number(data.tier), retail: Number(data.retail), rate: Math.round(Number(data.retail) * 0.04),
-      status: 'pending', condition: data.condition, size: data.size || undefined, desc: data.desc || '',
+      status: 'pending', img: CATEGORY_IMG[data.category], condition: data.condition, size: data.size || undefined, desc: data.desc || '',
       color: '#d8b25c', art: arts[Math.floor(Math.random() * arts.length)], likes: 0, createdAt: todayISO(),
     };
     state.items.unshift(it);
