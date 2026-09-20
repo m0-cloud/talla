@@ -231,8 +231,7 @@ body:not(.no-cursor) a, body:not(.no-cursor) button, body:not(.no-cursor) input,
 .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
 .plan { display: flex; flex-direction: column; gap: 14px; }
 .plan.featured { border-color: rgba(216,178,92,.5); background: linear-gradient(180deg, rgba(216,178,92,.09), rgba(255,255,255,.03)); transform: translateY(-8px); }
-.plan .ribbon { position: absolute; top: 18px; inset-inline-start: -34px; transform: rotate(45deg); background: linear-gradient(90deg, var(--gold-3), var(--gold-2)); color: #17130a; font-size: .72rem; font-weight: 800; padding: 5px 44px; }
-[dir="rtl"] .plan .ribbon { transform: rotate(-45deg); }
+.plan .ribbon { position: absolute; top: 26px; left: -46px; right: auto; transform: rotate(-45deg); background: linear-gradient(90deg, var(--gold-3), var(--gold-2)); color: #17130a; font-size: .9rem; font-weight: 800; padding: 8px 56px; letter-spacing: .02em; box-shadow: 0 8px 20px -8px rgba(216,178,92,.8); white-space: nowrap; z-index: 2; }
 .plan .pname { font-size: 1.5rem; font-weight: 900; display: flex; align-items: center; gap: 10px; }
 .plan .pname i { width: 14px; height: 14px; border-radius: 50%; display: inline-block; box-shadow: 0 0 16px currentColor; }
 .plan .pprice { font-size: 2.6rem; font-weight: 900; line-height: 1; }
