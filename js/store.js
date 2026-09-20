@@ -1,11 +1,11 @@
 /* ============================================================
-   Rent4Less — إدارة الحالة (Store)
+   Talla · طلّة — إدارة الحالة (Store)
    يحفظ الحالة في localStorage ليبقى الموقع "ديناميكياً" بين الجلسات
    ============================================================ */
 
 const Store = (() => {
-  const KEY = 'r4l_state_v2';
-  const SKEY = 'r4l_session_v1';
+  const KEY = 'talla_state_v1';
+  const SKEY = 'talla_session_v1';
 
   const clone = (o) => JSON.parse(JSON.stringify(o));
   const uid = (p) => p + Math.random().toString(36).slice(2, 7);
